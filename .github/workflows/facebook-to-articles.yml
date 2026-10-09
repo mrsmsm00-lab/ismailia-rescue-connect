@@ -1,0 +1,46 @@
+name: Daily Facebook to Articles
+
+on:
+  schedule:
+    - cron: "15 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: facebook-article-import
+  cancel-in-progress: false
+
+jobs:
+  import-posts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Import new Facebook posts and generate articles
+        env:
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: gpt-4.1-mini
+          META_GRAPH_VERSION: v26.0
+        run: node scripts/facebook-to-articles.mjs
+      - name: Commit generated articles and downloaded images
+        run: |
+          git config user.name "facebook-article-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/lib/facebook-articles.generated.ts public/facebook-posts
+          if git diff --cached --quiet; then
+            echo "No new content to commit."
+          else
+            git commit -m "Publish articles from new Facebook posts"
+            git push origin HEAD:main
+          fi

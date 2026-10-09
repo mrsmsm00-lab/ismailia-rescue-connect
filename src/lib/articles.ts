@@ -4,11 +4,12 @@ import slide3 from "../assets/winch/slide3.jpg";
 import slide4 from "../assets/winch/slide4.jpg";
 import slide5 from "../assets/winch/slide5.jpg";
 import slide6 from "../assets/winch/slide6.jpg";
+import { facebookArticles } from "./facebook-articles.generated";
 
 export type ArticleSection = { heading: string; paragraphs: string[]; bullets?: string[] };
 export type LocalArticle = { slug: string; title: string; seoTitle: string; description: string; keyword: string; cover: string; intro: string; sections: ArticleSection[] };
 
-export const articles: LocalArticle[] = [
+const manualArticles: LocalArticle[] = [
 {
 slug:"winch-rescue-ismailia-city", title:"ونش إنقاذ سيارات في مدينة الإسماعيلية: تتصرف إزاي وقت العطل؟",
 seoTitle:"ونش إنقاذ الإسماعيلية 24 ساعة | ونش العمار",
@@ -206,7 +207,9 @@ sections:[
 {heading:"اطلب ونش العمار",paragraphs:["للاستفسار عن ونش إنقاذ على الطرق الرئيسية بالإسماعيلية، اتصل على 01206188884 أو 01206188883 حسب المنطقة، وشارك بيانات البلاغ لتأكيد التغطية وطريقة النقل."]}
 ]}
 
-];
+ ];
+
+export const articles: LocalArticle[] = [...manualArticles, ...facebookArticles];
 
 export function getArticle(slug: string) {
   return articles.find((article) => article.slug === slug);
