@@ -3,7 +3,6 @@ import { Menu, Phone, X } from "lucide-react";
 import { useState } from "react";
 import logo from "../assets/winch/logo.jpeg";
 import { SITE, tel, wa } from "../lib/site";
-import bigLogo from "../assets/winch-logo.png.asset.json";
 
 const nav = [
   { to: "/", label: "ونش انقاذ الاسماعيلية" },
@@ -23,7 +22,7 @@ export function Header() {
             <p className="text-sm font-extrabold text-foreground">{SITE.shortName}</p>
             <p className="text-[11px] text-muted-foreground">انقاذ سيارات الاسماعيلية رقم 1#</p>
           </div>
-          <img src={bigLogo.url} alt="شعار ونش العمار" className="h-12 w-auto" />
+          <img src="/winch-logo.png" alt="شعار ونش العمار" className="h-12 w-auto" />
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           {nav.map((n) => (
