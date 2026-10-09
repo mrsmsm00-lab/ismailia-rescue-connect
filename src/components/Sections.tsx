@@ -59,8 +59,8 @@ export function AreaCards({ areas }: { areas: { name: string; desc: string }[] }
 export function Reviews({ items }: { items: { name: string; text: string }[] }) {
   return (
     <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {items.map((r) => (
-        <figure key={r.name} className="rounded-2xl border border-border bg-card p-6">
+      {items.map((r, i) => (
+        <figure key={`${r.name}-${i}`} className="rounded-2xl border border-border bg-card p-6">
           <div className="flex gap-1 text-primary">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} className="h-4 w-4 fill-current" />
