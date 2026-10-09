@@ -34,6 +34,9 @@ export const Route = createFileRoute("/sitemap.xml")({
           ...staticPaths,
           ...areas.filter((area) => typeof area.slug === "string" && area.slug.trim()).map((area) => `/area/${area.slug}/`),
           "/articles/",
+          "/gallery/",
+          ...Array.from({ length: Math.max(0, Math.ceil(94 / 20) - 1) }, (_, index) => `/gallery/page${index + 2}/`),
+          ...Array.from({ length: 94 }, (_, index) => `/gallery/fleet-${String(index + 1).padStart(3, "0")}/`),
           ...Array.from({ length: Math.max(0, Math.ceil(articles.length / 20) - 1) }, (_, index) => `/articles/page${index + 2}/`),
           ...articles.filter((article) => typeof article.slug === "string" && article.slug.trim()).map((article) => `/articles/${article.slug}/`),
         ];
