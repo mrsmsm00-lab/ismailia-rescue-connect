@@ -41,6 +41,16 @@ function ArticlePage() {
           <h1 className="mt-5 text-3xl font-extrabold leading-relaxed text-foreground md:text-5xl">{article.title}</h1>
           <p className="mt-5 max-w-3xl text-lg leading-9 text-muted-foreground">{article.intro}</p>
           <img src={article.cover} alt={article.title} className="mt-8 max-h-[420px] w-full rounded-2xl border border-border object-cover" loading="eager" />
+          {article.gallery && article.gallery.length > 0 && (
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              {article.gallery.map((image) => (
+                <figure key={image.src} className="overflow-hidden rounded-2xl border border-border bg-card">
+                  <img src={image.src} alt={image.alt} className="aspect-[4/3] w-full object-cover" loading="lazy" />
+                  <figcaption className="p-3 text-sm leading-6 text-muted-foreground">{image.alt}</figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
         </div>
       </section>
       <Article>
