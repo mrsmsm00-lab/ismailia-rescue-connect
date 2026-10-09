@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, BookOpen } from "lucide-react";
 import { articles } from "../lib/articles";
 import { Section } from "../components/Sections";
+import { SITE } from "../lib/site";
 
 export const Route = createFileRoute("/articles/")({
   head: () => ({
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/articles/")({
       { property: "og:type", content: "website" },
     ],
   }),
+  links: [{ rel: "canonical", href: SITE.domain + "/articles/" }],
   component: ArticlesIndex,
 });
 
