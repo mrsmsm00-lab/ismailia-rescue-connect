@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { HeroSlider } from "../components/HeroSlider";
 import { AreaCards, Article, CtaBanner, FeatureGrid, Reviews, Section } from "../components/Sections";
-import { ismailiaAreas, keywords, mainRoads, SITE } from "../lib/site";
+import { ismailiaAreas, mainRoads, SITE } from "../lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,6 +21,7 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
+  links: [{ rel: "canonical", href: SITE.domain + "/" }],
   component: Index,
 });
 
@@ -144,16 +145,6 @@ function Index() {
           في الإسماعيلية، فلا تتردد في التواصل مع ونش العمار الآن.
         </p>
       </Article>
-
-      <Section title="كلمات بحث">
-        <div className="flex flex-wrap gap-2">
-          {keywords.map((k) => (
-            <span key={k} className="rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold text-secondary-foreground">
-              {k}
-            </span>
-          ))}
-        </div>
-      </Section>
 
       <CtaBanner title="احجز ونش الآن بأفضل سعر" />
     </>
