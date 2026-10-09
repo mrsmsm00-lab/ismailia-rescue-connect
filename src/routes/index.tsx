@@ -86,7 +86,7 @@ function Index() {
             return <Link key={number} to="/gallery/$slug" params={{ slug: `fleet-${number}` }} className="overflow-hidden rounded-2xl border border-border bg-card"><img src={`/fleet-${number}.jpeg`} alt={`صورة ${index + 1} من أسطول ونش العمار`} className="aspect-[4/3] w-full object-cover" loading="lazy" /><div className="p-4 font-bold text-foreground">صورة من أسطول ونش العمار {index + 1}</div></Link>;
           })}
         </div>
-        <Link to="/gallery" className="mt-6 inline-flex rounded-full border border-primary px-6 py-3 font-bold text-primary">عرض معرض الصور — 20 صورة في الصفحة</Link>
+        <Link to="/fleet/" className="mt-6 inline-flex rounded-full border border-primary px-6 py-3 font-bold text-primary">عرض أسطول الأوناش وفتح الصور بسهمين ←</Link>
       </Section>
 
       <Section id="videos" title="فيديوهات من خدمات الإنقاذ" subtitle="مقاطع من أرشيف الموقع، مع تشغيل يدوي لتقليل التحميل الأولي.">
