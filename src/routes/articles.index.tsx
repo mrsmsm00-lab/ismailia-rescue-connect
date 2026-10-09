@@ -15,10 +15,9 @@ export const Route = createFileRoute("/articles/")({
 });
 
 function ArticlesIndex() {
-  const pageMatch = null;
   const pageSize = 20;
   const totalPages = Math.max(1, Math.ceil(articles.length / pageSize));
-  const currentPage = Math.min(Math.max(1, Number(pageMatch?.[1]) || 1), totalPages);
+  const currentPage = 1;
   const pageArticles = articles.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   return (
