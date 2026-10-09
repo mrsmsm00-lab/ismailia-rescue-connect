@@ -10,33 +10,140 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as R10oframadanRouteImport } from './routes/10oframadan'
+import { Route as R30junRouteImport } from './routes/30jun'
+import { Route as AhmedAbouMousalemWinchRouteImport } from './routes/ahmed-abou-mousalem-winch'
+import { Route as Char1575Char1602Char1585Char1576Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Char1605Char1606Char1605Char1608Char1602Char1593Char1609RouteImport } from './routes/اقرب-ونش-انقاذ-من-موقعى'
+import { Route as Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char157724Char1587Char1575Char1593Char1577Char1608Char1606Char1588Char1575Char1604Char1593Char1605Char1575Char1585RouteImport } from './routes/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار'
+import { Route as Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577RouteImport } from './routes/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية'
+import { Route as Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584RouteImport } from './routes/ونش-انقاذ'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const R10oframadanRoute = R10oframadanRouteImport.update({
+  id: '/10oframadan',
+  path: '/10oframadan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R30junRoute = R30junRouteImport.update({
+  id: '/30jun',
+  path: '/30jun',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AhmedAbouMousalemWinchRoute = AhmedAbouMousalemWinchRouteImport.update({
+  id: '/ahmed-abou-mousalem-winch',
+  path: '/ahmed-abou-mousalem-winch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Char1575Char1602Char1585Char1576Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Char1605Char1606Char1605Char1608Char1602Char1593Char1609Route =
+  Char1575Char1602Char1585Char1576Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Char1605Char1606Char1605Char1608Char1602Char1593Char1609RouteImport.update(
+    {
+      id: '/اقرب-ونش-انقاذ-من-موقعى',
+      path: '/اقرب-ونش-انقاذ-من-موقعى',
+      getParentRoute: () => rootRouteImport,
+    } as any,
+  )
+const Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char157724Char1587Char1575Char1593Char1577Char1608Char1606Char1588Char1575Char1604Char1593Char1605Char1575Char1585Route =
+  Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char157724Char1587Char1575Char1593Char1577Char1608Char1606Char1588Char1575Char1604Char1593Char1605Char1575Char1585RouteImport.update(
+    {
+      id: '/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار',
+      path: '/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار',
+      getParentRoute: () => rootRouteImport,
+    } as any,
+  )
+const Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Route =
+  Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577RouteImport.update(
+    {
+      id: '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية',
+      path: '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية',
+      getParentRoute: () => rootRouteImport,
+    } as any,
+  )
+const Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route =
+  Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584RouteImport.update(
+    {
+      id: '/ونش-انقاذ',
+      path: '/ونش-انقاذ',
+      getParentRoute: () => rootRouteImport,
+    } as any,
+  )
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/10oframadan': typeof R10oframadanRoute
+  '/30jun': typeof R30junRoute
+  '/ahmed-abou-mousalem-winch': typeof AhmedAbouMousalemWinchRoute
+  '/اقرب-ونش-انقاذ-من-موقعى': typeof Char1575Char1602Char1585Char1576Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Char1605Char1606Char1605Char1608Char1602Char1593Char1609Route
+  '/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار': typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char157724Char1587Char1575Char1593Char1577Char1608Char1606Char1588Char1575Char1604Char1593Char1605Char1575Char1585Route
+  '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية': typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Route
+  '/ونش-انقاذ': typeof Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/10oframadan': typeof R10oframadanRoute
+  '/30jun': typeof R30junRoute
+  '/ahmed-abou-mousalem-winch': typeof AhmedAbouMousalemWinchRoute
+  '/اقرب-ونش-انقاذ-من-موقعى': typeof Char1575Char1602Char1585Char1576Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Char1605Char1606Char1605Char1608Char1602Char1593Char1609Route
+  '/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار': typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char157724Char1587Char1575Char1593Char1577Char1608Char1606Char1588Char1575Char1604Char1593Char1605Char1575Char1585Route
+  '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية': typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Route
+  '/ونش-انقاذ': typeof Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/10oframadan': typeof R10oframadanRoute
+  '/30jun': typeof R30junRoute
+  '/ahmed-abou-mousalem-winch': typeof AhmedAbouMousalemWinchRoute
+  '/اقرب-ونش-انقاذ-من-موقعى': typeof Char1575Char1602Char1585Char1576Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Char1605Char1606Char1605Char1608Char1602Char1593Char1609Route
+  '/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار': typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char157724Char1587Char1575Char1593Char1577Char1608Char1606Char1588Char1575Char1604Char1593Char1605Char1575Char1585Route
+  '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية': typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Route
+  '/ونش-انقاذ': typeof Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/10oframadan'
+    | '/30jun'
+    | '/ahmed-abou-mousalem-winch'
+    | '/اقرب-ونش-انقاذ-من-موقعى'
+    | '/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار'
+    | '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية'
+    | '/ونش-انقاذ'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/10oframadan'
+    | '/30jun'
+    | '/ahmed-abou-mousalem-winch'
+    | '/اقرب-ونش-انقاذ-من-موقعى'
+    | '/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار'
+    | '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية'
+    | '/ونش-انقاذ'
+  id:
+    | '__root__'
+    | '/'
+    | '/10oframadan'
+    | '/30jun'
+    | '/ahmed-abou-mousalem-winch'
+    | '/اقرب-ونش-انقاذ-من-موقعى'
+    | '/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار'
+    | '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية'
+    | '/ونش-انقاذ'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R10oframadanRoute: typeof R10oframadanRoute
+  R30junRoute: typeof R30junRoute
+  AhmedAbouMousalemWinchRoute: typeof AhmedAbouMousalemWinchRoute
+  Char1575Char1602Char1585Char1576Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Char1605Char1606Char1605Char1608Char1602Char1593Char1609Route: typeof Char1575Char1602Char1585Char1576Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Char1605Char1606Char1605Char1608Char1602Char1593Char1609Route
+  Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char157724Char1587Char1575Char1593Char1577Char1608Char1606Char1588Char1575Char1604Char1593Char1605Char1575Char1585Route: typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char157724Char1587Char1575Char1593Char1577Char1608Char1606Char1588Char1575Char1604Char1593Char1605Char1575Char1585Route
+  Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Route: typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Route
+  Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route: typeof Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +155,71 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/10oframadan': {
+      id: '/10oframadan'
+      path: '/10oframadan'
+      fullPath: '/10oframadan'
+      preLoaderRoute: typeof R10oframadanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/30jun': {
+      id: '/30jun'
+      path: '/30jun'
+      fullPath: '/30jun'
+      preLoaderRoute: typeof R30junRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ahmed-abou-mousalem-winch': {
+      id: '/ahmed-abou-mousalem-winch'
+      path: '/ahmed-abou-mousalem-winch'
+      fullPath: '/ahmed-abou-mousalem-winch'
+      preLoaderRoute: typeof AhmedAbouMousalemWinchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/اقرب-ونش-انقاذ-من-موقعى': {
+      id: '/اقرب-ونش-انقاذ-من-موقعى'
+      path: '/اقرب-ونش-انقاذ-من-موقعى'
+      fullPath: '/اقرب-ونش-انقاذ-من-موقعى'
+      preLoaderRoute: typeof Char1575Char1602Char1585Char1576Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Char1605Char1606Char1605Char1608Char1602Char1593Char1609RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار': {
+      id: '/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار'
+      path: '/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار'
+      fullPath: '/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار'
+      preLoaderRoute: typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char157724Char1587Char1575Char1593Char1577Char1608Char1606Char1588Char1575Char1604Char1593Char1605Char1575Char1585RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية': {
+      id: '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية'
+      path: '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية'
+      fullPath: '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية'
+      preLoaderRoute: typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ونش-انقاذ': {
+      id: '/ونش-انقاذ'
+      path: '/ونش-انقاذ'
+      fullPath: '/ونش-انقاذ'
+      preLoaderRoute: typeof Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584RouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R10oframadanRoute: R10oframadanRoute,
+  R30junRoute: R30junRoute,
+  AhmedAbouMousalemWinchRoute: AhmedAbouMousalemWinchRoute,
+  Char1575Char1602Char1585Char1576Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Char1605Char1606Char1605Char1608Char1602Char1593Char1609Route:
+    Char1575Char1602Char1585Char1576Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Char1605Char1606Char1605Char1608Char1602Char1593Char1609Route,
+  Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char157724Char1587Char1575Char1593Char1577Char1608Char1606Char1588Char1575Char1604Char1593Char1605Char1575Char1585Route:
+    Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char157724Char1587Char1575Char1593Char1577Char1608Char1606Char1588Char1575Char1604Char1593Char1605Char1575Char1585Route,
+  Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Route:
+    Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Route,
+  Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route:
+    Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
