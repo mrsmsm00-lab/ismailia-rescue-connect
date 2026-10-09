@@ -4,6 +4,9 @@ import { articles } from "../lib/articles";
 import { Section } from "../components/Sections";
 
 export const Route = createFileRoute("/articles/")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    page: Math.max(1, Number(search.page) || 1),
+  }),
   head: () => ({
     meta: [
       { title: "مقالات ونصائح ونش إنقاذ الإسماعيلية | ونش العمار" },
@@ -15,6 +18,12 @@ export const Route = createFileRoute("/articles/")({
 });
 
 function ArticlesIndex() {
+  const { page } = Route.useSearch();
+  const pageSize = 20;
+  const totalPages = Math.max(1, Math.ceil(articles.length / pageSize));
+  const currentPage = Math.min(page, totalPages);
+  const pageArticles = articles.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+
   return (
     <>
       <section className="border-b border-border bg-gradient-to-b from-primary/10 to-background">
@@ -26,7 +35,7 @@ function ArticlesIndex() {
       </section>
       <Section title={`كل المقالات (${articles.length})`} subtitle="محتوى متنوع، وكل مقال له عنوان ورابط ووصف مخصص لمحركات البحث.">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {articles.map((article) => (
+          {pageArticles.map((article) => (
             <article key={article.slug} className="overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/60">
               <Link to="/articles/$slug" params={{ slug: article.slug }} className="block">
                 <img src={article.cover} alt={article.title} className="h-48 w-full object-cover" loading="lazy" />
@@ -40,6 +49,32 @@ function ArticlesIndex() {
             </article>
           ))}
         </div>
+        {totalPages > 1 && (
+          <nav aria-label="التنقل بين صفحات المقالات" className="mt-10 flex flex-wrap items-center justify-center gap-2">
+            <Link
+              to="/articles"
+              search={{ page: Math.max(1, currentPage - 1) }}
+              aria-disabled={currentPage === 1}
+              className={`rounded-lg border border-border px-4 py-2 text-sm font-bold ${currentPage === 1 ? "pointer-events-none opacity-40" : "hover:border-primary"}`}
+            >السابق</Link>
+            {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => (
+              <Link
+                key={pageNumber}
+                to="/articles"
+                search={{ page: pageNumber }}
+                aria-current={currentPage === pageNumber ? "page" : undefined}
+                className={`min-w-10 rounded-lg border px-3 py-2 text-center text-sm font-bold ${currentPage === pageNumber ? "border-primary bg-primary text-primary-foreground" : "border-border hover:border-primary"}`}
+              >{pageNumber}</Link>
+            ))}
+            <Link
+              to="/articles"
+              search={{ page: Math.min(totalPages, currentPage + 1) }}
+              aria-disabled={currentPage === totalPages}
+              className={`rounded-lg border border-border px-4 py-2 text-sm font-bold ${currentPage === totalPages ? "pointer-events-none opacity-40" : "hover:border-primary"}`}
+            >التالي</Link>
+          </nav>
+        )}
+        <p className="mt-4 text-center text-sm text-muted-foreground">عرض {(currentPage - 1) * pageSize + 1}–{Math.min(currentPage * pageSize, articles.length)} من {articles.length} مقالًا</p>
       </Section>
     </>
   );
