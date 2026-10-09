@@ -79,6 +79,23 @@ function Index() {
         </div>
       </Section>
 
+      <Section id="fleet" title="أسطول أوناشنا" subtitle="تصفح صور أسطول ونش العمار، وكل صورة تفتح في صفحة مستقلة.">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {Array.from({ length: 8 }, (_, index) => {
+            const number = String(index + 1).padStart(3, "0");
+            return <Link key={number} to="/gallery/$slug" params={{ slug: `fleet-${number}` }} className="overflow-hidden rounded-2xl border border-border bg-card"><img src={`/fleet-${number}.jpeg`} alt={`صورة ${index + 1} من أسطول ونش العمار`} className="aspect-[4/3] w-full object-cover" loading="lazy" /><div className="p-4 font-bold text-foreground">صورة من أسطول ونش العمار {index + 1}</div></Link>;
+          })}
+        </div>
+        <Link to="/gallery" className="mt-6 inline-flex rounded-full border border-primary px-6 py-3 font-bold text-primary">عرض معرض الصور — 20 صورة في الصفحة</Link>
+      </Section>
+
+      <Section id="videos" title="فيديوهات من خدمات الإنقاذ" subtitle="مقاطع من أرشيف الموقع، مع تشغيل يدوي لتقليل التحميل الأولي.">
+        <div className="grid gap-6 md:grid-cols-2">
+          <article className="overflow-hidden rounded-2xl border border-border bg-card"><video controls preload="none" playsInline className="aspect-video w-full bg-black"><source src="/WhatsApp%20Video%202026-08-27%20at%206.43.46%20PM%20(1).mp4" type="video/mp4" /></video><div className="p-4"><h3 className="font-bold">فيديو من أرشيف خدمات ونش العمار</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">شاهد المقطع للتعرف على مشاهد من الخدمة.</p></div></article>
+          <article className="overflow-hidden rounded-2xl border border-border bg-card"><video controls preload="none" playsInline className="aspect-video w-full bg-black"><source src="/WhatsApp%20Video%202026-09-20%20at%206.19.46%20PM.mp4" type="video/mp4" /></video><div className="p-4"><h3 className="font-bold">مقطع آخر من أرشيف ونش العمار</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">يبدأ تشغيل الفيديو عند الضغط، لتقليل التحميل الأولي للصفحة.</p></div></article>
+        </div>
+      </Section>
+
       <Section title="مجموعة من آراء عملائنا">
         <Reviews items={reviews} />
       </Section>
