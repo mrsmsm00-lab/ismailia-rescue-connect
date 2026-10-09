@@ -1,13 +1,13 @@
-FROM node:22-bookworm-slim AS build
+FROM oven/bun:1 AS build
 WORKDIR /app
 
-# Install dependencies with npm instead of Bun.
-ENV NODE_ENV=development
-COPY package.json ./
-RUN npm install --no-audit --no-fund
+# Use the project's existing Bun lockfile, but run Bun from its official image
+# rather than the Bun binary selected by Nixpacks.
+COPY package.json bun.lock bunfig.toml ./
+RUN bun install --frozen-lockfile
 
 COPY . .
-RUN npm run build
+RUN bun run build
 
 FROM node:22-bookworm-slim AS runner
 WORKDIR /app
