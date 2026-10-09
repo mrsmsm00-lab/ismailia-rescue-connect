@@ -34,6 +34,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           ...staticPaths,
           ...areas.map((area) => `/area/${area.slug}/`),
           "/articles/",
+          ...Array.from({ length: Math.max(0, Math.ceil(articles.length / 20) - 1) }, (_, index) => `/articles/page${index + 2}/`),
           ...articles.map((article) => `/articles/${article.slug}/`),
         ];
 
