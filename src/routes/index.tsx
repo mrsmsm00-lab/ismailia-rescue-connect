@@ -94,6 +94,7 @@ function Index() {
           <article className="overflow-hidden rounded-2xl border border-border bg-card"><video controls preload="none" playsInline className="aspect-video w-full bg-black"><source src="/WhatsApp%20Video%202026-08-27%20at%206.43.46%20PM%20(1).mp4" type="video/mp4" /></video><div className="p-4"><h3 className="font-bold">فيديو من أرشيف خدمات ونش العمار</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">شاهد المقطع للتعرف على مشاهد من الخدمة.</p></div></article>
           <article className="overflow-hidden rounded-2xl border border-border bg-card"><video controls preload="none" playsInline className="aspect-video w-full bg-black"><source src="/WhatsApp%20Video%202026-09-20%20at%206.19.46%20PM.mp4" type="video/mp4" /></video><div className="p-4"><h3 className="font-bold">مقطع آخر من أرشيف ونش العمار</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">يبدأ تشغيل الفيديو عند الضغط، لتقليل التحميل الأولي للصفحة.</p></div></article>
         </div>
+        <Link to="/videos/" className="mt-6 inline-flex rounded-full border border-primary px-6 py-3 font-bold text-primary">عرض كل الفيديوهات وصفحاتها المستقلة ←</Link>
       </Section>
 
       <Section title="مجموعة من آراء عملائنا">
