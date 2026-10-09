@@ -1,0 +1,8 @@
+node_modules
+.output
+dist
+.git
+.gitignore
+bun.lock
+bunfig.toml
+npm-debug.log*
