@@ -27,7 +27,7 @@ export const Route = createFileRoute("/articles/$slug")({
     ],
     links: loaderData?.article
       ? [{ rel: "canonical", href: SITE.domain + "/articles/" + loaderData.article.slug + "/" }]
-      : [{ rel: "canonical", href: SITE.domain + "/articles/" }],
+      : [{ rel: "canonical", href: SITE.domain + "/articles/page" + (loaderData?.page ?? 2) + "/" }],
   }),
   component: ArticlePage,
 });
