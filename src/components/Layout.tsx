@@ -85,7 +85,7 @@ export function Header() {
 export function Footer() {
   return (
     <footer className="border-t border-border/60 bg-card">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-3">
             <img src={logo} alt={SITE.name} className="h-12 w-12 rounded-full border border-primary/40 object-cover" />
@@ -106,6 +106,31 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+          </ul>
+        </div>
+        <div>
+          <p className="font-bold text-foreground">مناطق ونش الإنقاذ الرئيسية</p>
+          <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+            <li>
+              <Link to="/" className="transition-colors hover:text-primary">
+                ونش إنقاذ الإسماعيلية 24 ساعة
+              </Link>
+            </li>
+            <li>
+              <Link to="/10oframadan" className="transition-colors hover:text-primary">
+                ونش إنقاذ العاشر من رمضان
+              </Link>
+            </li>
+            <li>
+              <Link to="/30jun" className="transition-colors hover:text-primary">
+                ونش إنقاذ محور 30 يونيو
+              </Link>
+            </li>
+            <li>
+              <Link to="/areas" className="transition-colors hover:text-primary">
+                جميع مناطق تغطية ونش العمار
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
