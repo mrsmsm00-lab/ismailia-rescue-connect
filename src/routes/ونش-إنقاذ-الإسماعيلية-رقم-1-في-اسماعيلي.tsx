@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Article, CtaBanner } from "../components/Sections";
 import { SITE } from "../lib/site";
 
-export const Route = createFileRoute("/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلية")({
+export const Route = createFileRoute("/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي")({
   head: () => ({
     meta: [
       { title: "ونش إنقاذ الإسماعيلية رقم 1 في اسماعيلية | ونش العمار" },

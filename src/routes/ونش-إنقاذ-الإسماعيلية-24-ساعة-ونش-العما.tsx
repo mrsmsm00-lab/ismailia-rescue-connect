@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AreaCards, Article, CtaBanner } from "../components/Sections";
 import { ismailiaAreas, SITE } from "../lib/site";
 
-export const Route = createFileRoute("/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العمار")({
+export const Route = createFileRoute("/ونش-إنقاذ-الإسماعيلية-24-ساعة-ونش-العما")({
   head: () => ({
     meta: [
       { title: "ونش إنقاذ الإسماعيلية 24 ساعة — مناطق التغطية | ونش العمار" },
