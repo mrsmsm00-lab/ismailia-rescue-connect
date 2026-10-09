@@ -3,6 +3,7 @@ import { ArrowRight, Clock, MapPin } from "lucide-react";
 import { Article, CtaBanner } from "../components/Sections";
 import { getArticle, articles } from "../lib/articles";
 import { SITE } from "../lib/site";
+import { ArticleStructuredData } from "../components/ArticleStructuredData";
 
 export const Route = createFileRoute("/articles/$slug")({
   loader: ({ params }) => {
@@ -22,7 +23,11 @@ export const Route = createFileRoute("/articles/$slug")({
       { property: "og:description", content: loaderData?.article?.description ?? "مقالات ونصائح إنقاذ السيارات." },
       { property: "og:image", content: loaderData?.article?.cover ?? "" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
     ],
+    links: loaderData?.article
+      ? [{ rel: "canonical", href: SITE.domain + "/articles/" + loaderData.article.slug + "/" }]
+      : [{ rel: "canonical", href: SITE.domain + "/articles/" }],
   }),
   component: ArticlePage,
 });
@@ -68,6 +73,12 @@ function ArticlePage() {
 
   return (
     <>
+      <ArticleStructuredData
+        title={article.title}
+        description={article.description}
+        slug={article.slug}
+        image={article.cover}
+      />
       <section className="border-b border-border bg-gradient-to-b from-primary/10 to-background">
         <div className="mx-auto max-w-4xl px-4 py-12">
           <Link to="/articles" className="inline-flex items-center gap-2 text-sm font-bold text-primary"><ArrowRight className="h-4 w-4" /> كل المقالات</Link>
