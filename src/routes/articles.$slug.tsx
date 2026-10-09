@@ -6,9 +6,11 @@ import { SITE } from "../lib/site";
 
 export const Route = createFileRoute("/articles/$slug")({
   loader: ({ params }) => {
+    const pageMatch = params.slug.match(/^page(\\d+)$/);
+    if (pageMatch) return { article: null, page: Math.max(2, Number(pageMatch[1]) || 2) };
     const article = getArticle(params.slug);
     if (!article) throw notFound();
-    return { article };
+    return { article, page: 1 };
   },
   head: ({ loaderData }) => ({
     meta: [
@@ -26,7 +28,42 @@ export const Route = createFileRoute("/articles/$slug")({
 });
 
 function ArticlePage() {
-  const { article } = Route.useLoaderData();
+  const { article, page } = Route.useLoaderData();
+  const pageSize = 20;
+  const totalPages = Math.max(1, Math.ceil(articles.length / pageSize));
+  if (!article) {
+    const currentPage = Math.min(page, totalPages);
+    const pageArticles = articles.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+    return (
+      <>
+        <section className="border-b border-border bg-gradient-to-b from-primary/10 to-background">
+          <div className="mx-auto max-w-6xl px-4 py-12 text-center">
+            <Link to="/articles" className="font-bold text-primary">كل المقالات</Link>
+            <h1 className="mt-5 text-3xl font-extrabold text-foreground md:text-5xl">مقالات ونصائح السائقين — الصفحة {currentPage}</h1>
+            <p className="mx-auto mt-4 max-w-3xl leading-8 text-muted-foreground">أدلة عملية للتعامل مع أعطال السيارات وطلب ونش الإنقاذ بأمان.</p>
+          </div>
+        </section>
+        <Article>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {pageArticles.map((item) => (
+              <article key={item.slug} className="overflow-hidden rounded-2xl border border-border bg-card">
+                <Link to="/articles/$slug" params={{ slug: item.slug }} className="block">
+                  <img src={item.cover} alt={item.title} className="h-48 w-full object-cover" loading="lazy" />
+                  <div className="p-5"><span className="text-xs font-bold text-primary">{item.keyword}</span><h2 className="mt-3 text-xl font-extrabold leading-8 text-foreground">{item.title}</h2><p className="mt-3 text-sm leading-7 text-muted-foreground">{item.description}</p></div>
+                </Link>
+              </article>
+            ))}
+          </div>
+          <nav aria-label="التنقل بين صفحات المقالات" className="mt-10 flex flex-wrap items-center justify-center gap-2">
+            <Link to={currentPage <= 2 ? "/articles" : "/articles/$slug"} params={currentPage <= 2 ? undefined : { slug: `page${currentPage - 1}` }} className="rounded-lg border border-border px-4 py-2 text-sm font-bold">السابق</Link>
+            {Array.from({ length: totalPages }, (_, index) => index + 1).map((number) => <Link key={number} to={number === 1 ? "/articles" : "/articles/$slug"} params={number === 1 ? undefined : { slug: `page${number}` }} aria-current={currentPage === number ? "page" : undefined} className={`min-w-10 rounded-lg border px-3 py-2 text-center text-sm font-bold ${currentPage === number ? "border-primary bg-primary text-primary-foreground" : "border-border hover:border-primary"}`}>{number}</Link>)}
+            <Link to="/articles/$slug" params={{ slug: `page${Math.min(totalPages, currentPage + 1)}` }} className="rounded-lg border border-border px-4 py-2 text-sm font-bold">التالي</Link>
+          </nav>
+          <p className="mt-4 text-center text-sm text-muted-foreground">عرض {(currentPage - 1) * pageSize + 1}–{Math.min(currentPage * pageSize, articles.length)} من {articles.length} مقالًا</p>
+        </Article>
+      </>
+    );
+  }
   const related = articles.filter((item) => item.slug !== article.slug && item.keyword !== article.keyword).slice(0, 4);
 
   return (
