@@ -9,6 +9,7 @@ const nav = [
   { to: "/30jun", label: "ونش انقاذ 30 يونيو" },
   { to: "/10oframadan", label: "ونش انقاذ العاشر من رمضان" },
   { to: "/areas", label: "مناطق التغطية" },
+  { to: "/articles/", label: "المقالات والنصائح" },
 ] as const;
 
 export function Header() {
