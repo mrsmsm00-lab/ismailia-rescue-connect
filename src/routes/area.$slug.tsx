@@ -3,6 +3,7 @@ import { MapPin, Phone } from "lucide-react";
 import { Article, CtaBanner, FeatureGrid, Section } from "../components/Sections";
 import { areaBySlug, areas, phoneFor, regionLabel } from "../lib/areas";
 import { SITE, tel, wa } from "../lib/site";
+import { BreadcrumbStructuredData, homeBreadcrumb } from "../components/BreadcrumbStructuredData";
 
 export const Route = createFileRoute("/area/$slug")({
   loader: ({ params }) => {
@@ -43,6 +44,11 @@ function AreaPage() {
   const related = areas.filter((x) => x.region === a.region && x.slug !== a.slug);
   return (
     <>
+      <BreadcrumbStructuredData items={[
+        homeBreadcrumb,
+        { name: "مناطق التغطية", url: SITE.domain + "/areas/" },
+        { name: "ونش إنقاذ " + a.name, url: SITE.domain + "/area/" + a.slug + "/" }
+      ]} />
       <section className="border-b border-border/60 bg-card">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <p className="text-sm font-bold text-primary">{regionLabel[a.region]}</p>
