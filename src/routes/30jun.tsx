@@ -22,6 +22,7 @@ export const Route = createFileRoute("/30jun")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
+  links: [{ rel: "canonical", href: SITE.domain + "/30jun/" }],
   component: JuneAxis,
 });
 
