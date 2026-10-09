@@ -10,6 +10,8 @@ const nav = [
   { to: "/10oframadan", label: "ونش انقاذ العاشر من رمضان" },
   { to: "/areas", label: "مناطق التغطية" },
   { to: "/articles/", label: "المقالات والنصائح" },
+  { to: "/fleet/", label: "أسطول الأوناش" },
+  { to: "/videos/", label: "الفيديوهات" },
 ] as const;
 
 export function Header() {
