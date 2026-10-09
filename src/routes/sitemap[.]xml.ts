@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { areas } from "../lib/areas";
 import { SITE } from "../lib/site";
+import { articles } from "../lib/articles";
 
 const paths = [
   "/",
@@ -14,6 +15,8 @@ const paths = [
   "/اقرب-ونش-انقاذ-من-موقعى/",
   "/category/uncategorized/",
   ...areas.map((a) => `/area/${a.slug}/`),
+  "/articles/",
+  ...articles.map((article) => `/articles/${article.slug}/`),
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({
