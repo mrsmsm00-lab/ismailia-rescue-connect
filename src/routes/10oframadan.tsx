@@ -23,6 +23,7 @@ export const Route = createFileRoute("/10oframadan")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
+  links: [{ rel: "canonical", href: SITE.domain + "/10oframadan/" }],
   component: TenthOfRamadan,
 });
 
