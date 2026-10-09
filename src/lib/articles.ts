@@ -5,6 +5,7 @@ import slide4 from "../assets/winch/slide4.jpg";
 import slide5 from "../assets/winch/slide5.jpg";
 import slide6 from "../assets/winch/slide6.jpg";
 import { facebookArticles } from "./facebook-articles.generated";
+import { additionalArticles } from "./additional-articles.generated";
 
 export type ArticleSection = { heading: string; paragraphs: string[]; bullets?: string[] };
 export type LocalArticle = { slug: string; title: string; seoTitle: string; description: string; keyword: string; cover: string; intro: string; sections: ArticleSection[]; gallery?: { src: string; alt: string }[] };
@@ -226,7 +227,7 @@ sections:[
 
  ];
 
-export const articles: LocalArticle[] = [...manualArticles, ...facebookArticles];
+export const articles: LocalArticle[] = [...manualArticles, ...additionalArticles, ...facebookArticles];
 
 export function getArticle(slug: string) {
   return articles.find((article) => article.slug === slug);
