@@ -4,9 +4,6 @@ import { articles } from "../lib/articles";
 import { Section } from "../components/Sections";
 
 export const Route = createFileRoute("/articles/")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    page: Math.max(1, Number(search.page) || 1),
-  }),
   head: () => ({
     meta: [
       { title: "مقالات ونصائح ونش إنقاذ الإسماعيلية | ونش العمار" },
@@ -18,10 +15,11 @@ export const Route = createFileRoute("/articles/")({
 });
 
 function ArticlesIndex() {
-  const { page } = Route.useSearch();
+  const pathname = typeof window === "undefined" ? "/articles" : window.location.pathname;
+  const pageMatch = pathname.match(/\/articles\/page(\d+)\/?$/);
   const pageSize = 20;
   const totalPages = Math.max(1, Math.ceil(articles.length / pageSize));
-  const currentPage = Math.min(page, totalPages);
+  const currentPage = Math.min(Math.max(1, Number(pageMatch?.[1]) || 1), totalPages);
   const pageArticles = articles.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   return (
@@ -52,23 +50,23 @@ function ArticlesIndex() {
         {totalPages > 1 && (
           <nav aria-label="التنقل بين صفحات المقالات" className="mt-10 flex flex-wrap items-center justify-center gap-2">
             <Link
-              to="/articles"
-              search={{ page: Math.max(1, currentPage - 1) }}
+              to={currentPage - 1 <= 1 ? "/articles" : "/articles/page$number"}
+              params={currentPage - 1 <= 1 ? undefined : { number: String(currentPage - 1) }}
               aria-disabled={currentPage === 1}
               className={`rounded-lg border border-border px-4 py-2 text-sm font-bold ${currentPage === 1 ? "pointer-events-none opacity-40" : "hover:border-primary"}`}
             >السابق</Link>
             {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => (
               <Link
                 key={pageNumber}
-                to="/articles"
-                search={{ page: pageNumber }}
+                to={pageNumber === 1 ? "/articles" : "/articles/page$number"}
+                params={pageNumber === 1 ? undefined : { number: String(pageNumber) }}
                 aria-current={currentPage === pageNumber ? "page" : undefined}
                 className={`min-w-10 rounded-lg border px-3 py-2 text-center text-sm font-bold ${currentPage === pageNumber ? "border-primary bg-primary text-primary-foreground" : "border-border hover:border-primary"}`}
               >{pageNumber}</Link>
             ))}
             <Link
-              to="/articles"
-              search={{ page: Math.min(totalPages, currentPage + 1) }}
+              to={currentPage >= totalPages - 1 ? "/articles/page$number" : "/articles/page$number"}
+              params={{ number: String(Math.min(totalPages, currentPage + 1)) }}
               aria-disabled={currentPage === totalPages}
               className={`rounded-lg border border-border px-4 py-2 text-sm font-bold ${currentPage === totalPages ? "pointer-events-none opacity-40" : "hover:border-primary"}`}
             >التالي</Link>
