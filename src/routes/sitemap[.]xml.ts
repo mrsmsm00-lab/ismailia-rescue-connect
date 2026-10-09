@@ -32,17 +32,23 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: () => {
         const paths = [
           ...staticPaths,
-          ...areas.map((area) => `/area/${area.slug}/`),
+          ...areas.filter((area) => typeof area.slug === "string" && area.slug.trim()).map((area) => `/area/${area.slug}/`),
           "/articles/",
           ...Array.from({ length: Math.max(0, Math.ceil(articles.length / 20) - 1) }, (_, index) => `/articles/page${index + 2}/`),
-          ...articles.map((article) => `/articles/${article.slug}/`),
+          ...articles.filter((article) => typeof article.slug === "string" && article.slug.trim()).map((article) => `/articles/${article.slug}/`),
         ];
 
         // Avoid duplicate entries while preserving the original ordering.
-        const uniquePaths = [...new Set(paths)];
+        const uniquePaths = [...new Set(paths)].filter(
+          (path): path is string =>
+            typeof path === "string" &&
+            path.startsWith("/") &&
+            !path.includes("undefined") &&
+            !path.includes("null"),
+        );
         const urls = uniquePaths
           .map((path) => {
-            const loc = xmlEscape(`${SITE.domain}${encodeURI(path)}`);
+            const loc = xmlEscape(new URL(path, SITE.domain).toString());
             return `  <url><loc>${loc}</loc></url>`;
           })
           .join("\n");
