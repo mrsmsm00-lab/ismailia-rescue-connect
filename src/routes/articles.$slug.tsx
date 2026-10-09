@@ -6,7 +6,7 @@ import { SITE } from "../lib/site";
 
 export const Route = createFileRoute("/articles/$slug")({
   loader: ({ params }) => {
-    const pageMatch = params.slug.match(/^page(\\d+)$/);
+    const pageMatch = params.slug.match(/^page(\d+)$/);
     if (pageMatch) return { article: null, page: Math.max(2, Number(pageMatch[1]) || 2) };
     const article = getArticle(params.slug);
     if (!article) throw notFound();
@@ -14,13 +14,13 @@ export const Route = createFileRoute("/articles/$slug")({
   },
   head: ({ loaderData }) => ({
     meta: [
-      { title: loaderData?.article.seoTitle ?? "مقالات ونش العمار" },
-      { name: "description", content: loaderData?.article.description ?? "مقالات ونصائح إنقاذ السيارات من ونش العمار." },
-      { name: "keywords", content: loaderData?.article.keyword ?? "ونش إنقاذ الإسماعيلية" },
+      { title: loaderData?.article?.seoTitle ?? "مقالات ونش العمار" },
+      { name: "description", content: loaderData?.article?.description ?? "مقالات ونصائح إنقاذ السيارات من ونش العمار." },
+      { name: "keywords", content: loaderData?.article?.keyword ?? "ونش إنقاذ الإسماعيلية" },
       { property: "og:type", content: "article" },
-      { property: "og:title", content: loaderData?.article.seoTitle ?? "مقالات ونش العمار" },
-      { property: "og:description", content: loaderData?.article.description ?? "مقالات ونصائح إنقاذ السيارات." },
-      { property: "og:image", content: loaderData?.article.cover ?? "" },
+      { property: "og:title", content: loaderData?.article?.seoTitle ?? "مقالات ونش العمار" },
+      { property: "og:description", content: loaderData?.article?.description ?? "مقالات ونصائح إنقاذ السيارات." },
+      { property: "og:image", content: loaderData?.article?.cover ?? "" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
