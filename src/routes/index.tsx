@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { HeroSlider } from "../components/HeroSlider";
-import bigLogo from "../assets/winch-logo.png.asset.json";
 import { AreaCards, Article, CtaBanner, FeatureGrid, Reviews, Section } from "../components/Sections";
 import { ismailiaAreas, keywords, mainRoads, SITE } from "../lib/site";
 
@@ -37,7 +36,7 @@ function Index() {
     <>
       <HeroSlider />
       <section className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-14 text-center">
-        <img src={bigLogo.url} alt="ونش العمار انقاذ سيارات الاسماعيلية رقم 1" className="w-full max-w-xl drop-shadow-2xl" loading="eager" />
+        <img src="/winch-logo.png" alt="ونش العمار انقاذ سيارات الاسماعيلية رقم 1" className="w-full max-w-xl drop-shadow-2xl" loading="eager" />
         <p className="max-w-2xl text-lg leading-8 text-muted-foreground">ونش العمار — رقم 1 في انقاذ سيارات الإسماعيلية والعاشر من رمضان ومحور 30 يونيو، على مدار 24 ساعة.</p>
       </section>
 
