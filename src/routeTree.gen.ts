@@ -20,6 +20,7 @@ import { Route as Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char15
 import { Route as Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610RouteImport } from './routes/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي'
 import { Route as Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584RouteImport } from './routes/ونش-انقاذ'
 import { Route as AreaSlugRouteImport } from './routes/area.$slug'
+import { Route as CategoryUncategorizedRouteImport } from './routes/category.uncategorized'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -88,6 +89,11 @@ const AreaSlugRoute = AreaSlugRouteImport.update({
   path: '/area/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CategoryUncategorizedRoute = CategoryUncategorizedRouteImport.update({
+  id: '/category/uncategorized',
+  path: '/category/uncategorized',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي': typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Route
   '/ونش-انقاذ': typeof Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route
   '/area/$slug': typeof AreaSlugRoute
+  '/category/uncategorized': typeof CategoryUncategorizedRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي': typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Route
   '/ونش-انقاذ': typeof Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route
   '/area/$slug': typeof AreaSlugRoute
+  '/category/uncategorized': typeof CategoryUncategorizedRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -128,6 +136,7 @@ export interface FileRoutesById {
   '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي': typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Route
   '/ونش-انقاذ': typeof Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route
   '/area/$slug': typeof AreaSlugRoute
+  '/category/uncategorized': typeof CategoryUncategorizedRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -143,6 +152,7 @@ export interface FileRouteTypes {
     | '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي'
     | '/ونش-انقاذ'
     | '/area/$slug'
+    | '/category/uncategorized'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -156,6 +166,7 @@ export interface FileRouteTypes {
     | '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي'
     | '/ونش-انقاذ'
     | '/area/$slug'
+    | '/category/uncategorized'
   id:
     | '__root__'
     | '/'
@@ -169,6 +180,7 @@ export interface FileRouteTypes {
     | '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي'
     | '/ونش-انقاذ'
     | '/area/$slug'
+    | '/category/uncategorized'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -183,6 +195,7 @@ export interface RootRouteChildren {
   Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Route: typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Route
   Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route: typeof Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route
   AreaSlugRoute: typeof AreaSlugRoute
+  CategoryUncategorizedRoute: typeof CategoryUncategorizedRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -264,6 +277,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AreaSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/category/uncategorized': {
+      id: '/category/uncategorized'
+      path: '/category/uncategorized'
+      fullPath: '/category/uncategorized'
+      preLoaderRoute: typeof CategoryUncategorizedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -283,6 +303,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route:
     Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route,
   AreaSlugRoute: AreaSlugRoute,
+  CategoryUncategorizedRoute: CategoryUncategorizedRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
