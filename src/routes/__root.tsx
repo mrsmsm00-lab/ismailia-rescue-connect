@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { FloatingButtons, Footer, Header } from "../components/Layout";
 import { SITE } from "../lib/site";
+import { SiteStructuredData } from "../components/SiteStructuredData";
 
 function NotFoundComponent() {
   return (
@@ -133,6 +134,7 @@ function RootComponent() {
       </main>
       <Footer />
       <FloatingButtons />
+      <SiteStructuredData />
     </QueryClientProvider>
   );
 }
