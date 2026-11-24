@@ -20,14 +20,7 @@ import { Route as Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char15
 import { Route as Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610RouteImport } from './routes/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي'
 import { Route as Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584RouteImport } from './routes/ونش-انقاذ'
 import { Route as AreaSlugRouteImport } from './routes/area.$slug'
-import { Route as ArticlesIndexRouteImport } from './routes/articles.index'
-import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
 import { Route as CategoryUncategorizedRouteImport } from './routes/category.uncategorized'
-import { Route as FleetIndexRouteImport } from './routes/fleet.index'
-import { Route as GalleryIndexRouteImport } from './routes/gallery.index'
-import { Route as GallerySlugRouteImport } from './routes/gallery.$slug'
-import { Route as VideosIndexRouteImport } from './routes/videos.index'
-import { Route as VideosSlugRouteImport } from './routes/videos.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -96,44 +89,9 @@ const AreaSlugRoute = AreaSlugRouteImport.update({
   path: '/area/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ArticlesIndexRoute = ArticlesIndexRouteImport.update({
-  id: '/articles/',
-  path: '/articles/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
-  id: '/articles/$slug',
-  path: '/articles/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CategoryUncategorizedRoute = CategoryUncategorizedRouteImport.update({
   id: '/category/uncategorized',
   path: '/category/uncategorized',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FleetIndexRoute = FleetIndexRouteImport.update({
-  id: '/fleet/',
-  path: '/fleet/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GalleryIndexRoute = GalleryIndexRouteImport.update({
-  id: '/gallery/',
-  path: '/gallery/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GallerySlugRoute = GallerySlugRouteImport.update({
-  id: '/gallery/$slug',
-  path: '/gallery/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VideosIndexRoute = VideosIndexRouteImport.update({
-  id: '/videos/',
-  path: '/videos/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VideosSlugRoute = VideosSlugRouteImport.update({
-  id: '/videos/$slug',
-  path: '/videos/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -149,14 +107,7 @@ export interface FileRoutesByFullPath {
   '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي': typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Route
   '/ونش-انقاذ': typeof Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route
   '/area/$slug': typeof AreaSlugRoute
-  '/articles/$slug': typeof ArticlesSlugRoute
   '/category/uncategorized': typeof CategoryUncategorizedRoute
-  '/gallery/$slug': typeof GallerySlugRoute
-  '/videos/$slug': typeof VideosSlugRoute
-  '/articles/': typeof ArticlesIndexRoute
-  '/fleet/': typeof FleetIndexRoute
-  '/gallery/': typeof GalleryIndexRoute
-  '/videos/': typeof VideosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -170,14 +121,7 @@ export interface FileRoutesByTo {
   '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي': typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Route
   '/ونش-انقاذ': typeof Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route
   '/area/$slug': typeof AreaSlugRoute
-  '/articles/$slug': typeof ArticlesSlugRoute
   '/category/uncategorized': typeof CategoryUncategorizedRoute
-  '/gallery/$slug': typeof GallerySlugRoute
-  '/videos/$slug': typeof VideosSlugRoute
-  '/articles': typeof ArticlesIndexRoute
-  '/fleet': typeof FleetIndexRoute
-  '/gallery': typeof GalleryIndexRoute
-  '/videos': typeof VideosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -192,14 +136,7 @@ export interface FileRoutesById {
   '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي': typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Route
   '/ونش-انقاذ': typeof Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route
   '/area/$slug': typeof AreaSlugRoute
-  '/articles/$slug': typeof ArticlesSlugRoute
   '/category/uncategorized': typeof CategoryUncategorizedRoute
-  '/gallery/$slug': typeof GallerySlugRoute
-  '/videos/$slug': typeof VideosSlugRoute
-  '/articles/': typeof ArticlesIndexRoute
-  '/fleet/': typeof FleetIndexRoute
-  '/gallery/': typeof GalleryIndexRoute
-  '/videos/': typeof VideosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -215,14 +152,7 @@ export interface FileRouteTypes {
     | '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي'
     | '/ونش-انقاذ'
     | '/area/$slug'
-    | '/articles/$slug'
     | '/category/uncategorized'
-    | '/gallery/$slug'
-    | '/videos/$slug'
-    | '/articles/'
-    | '/fleet/'
-    | '/gallery/'
-    | '/videos/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -236,14 +166,7 @@ export interface FileRouteTypes {
     | '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي'
     | '/ونش-انقاذ'
     | '/area/$slug'
-    | '/articles/$slug'
     | '/category/uncategorized'
-    | '/gallery/$slug'
-    | '/videos/$slug'
-    | '/articles'
-    | '/fleet'
-    | '/gallery'
-    | '/videos'
   id:
     | '__root__'
     | '/'
@@ -257,14 +180,7 @@ export interface FileRouteTypes {
     | '/ونش-إنقاذ-الإسماعيلية-رقم-1-في-اسماعيلي'
     | '/ونش-انقاذ'
     | '/area/$slug'
-    | '/articles/$slug'
     | '/category/uncategorized'
-    | '/gallery/$slug'
-    | '/videos/$slug'
-    | '/articles/'
-    | '/fleet/'
-    | '/gallery/'
-    | '/videos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -279,14 +195,7 @@ export interface RootRouteChildren {
   Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Route: typeof Char1608Char1606Char1588Char1573Char1606Char1602Char1575Char1584Char1575Char1604Char1573Char1587Char1605Char1575Char1593Char1610Char1604Char1610Char1577Char1585Char1602Char16051Char1601Char1610Char1575Char1587Char1605Char1575Char1593Char1610Char1604Char1610Route
   Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route: typeof Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route
   AreaSlugRoute: typeof AreaSlugRoute
-  ArticlesSlugRoute: typeof ArticlesSlugRoute
   CategoryUncategorizedRoute: typeof CategoryUncategorizedRoute
-  GallerySlugRoute: typeof GallerySlugRoute
-  VideosSlugRoute: typeof VideosSlugRoute
-  ArticlesIndexRoute: typeof ArticlesIndexRoute
-  FleetIndexRoute: typeof FleetIndexRoute
-  GalleryIndexRoute: typeof GalleryIndexRoute
-  VideosIndexRoute: typeof VideosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -368,60 +277,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AreaSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/articles/': {
-      id: '/articles/'
-      path: '/articles'
-      fullPath: '/articles/'
-      preLoaderRoute: typeof ArticlesIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/articles/$slug': {
-      id: '/articles/$slug'
-      path: '/articles/$slug'
-      fullPath: '/articles/$slug'
-      preLoaderRoute: typeof ArticlesSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/category/uncategorized': {
       id: '/category/uncategorized'
       path: '/category/uncategorized'
       fullPath: '/category/uncategorized'
       preLoaderRoute: typeof CategoryUncategorizedRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/fleet/': {
-      id: '/fleet/'
-      path: '/fleet'
-      fullPath: '/fleet/'
-      preLoaderRoute: typeof FleetIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/gallery/': {
-      id: '/gallery/'
-      path: '/gallery'
-      fullPath: '/gallery/'
-      preLoaderRoute: typeof GalleryIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/gallery/$slug': {
-      id: '/gallery/$slug'
-      path: '/gallery/$slug'
-      fullPath: '/gallery/$slug'
-      preLoaderRoute: typeof GallerySlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/videos/': {
-      id: '/videos/'
-      path: '/videos'
-      fullPath: '/videos/'
-      preLoaderRoute: typeof VideosIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/videos/$slug': {
-      id: '/videos/$slug'
-      path: '/videos/$slug'
-      fullPath: '/videos/$slug'
-      preLoaderRoute: typeof VideosSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -443,14 +303,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route:
     Char1608Char1606Char1588Char1575Char1606Char1602Char1575Char1584Route,
   AreaSlugRoute: AreaSlugRoute,
-  ArticlesSlugRoute: ArticlesSlugRoute,
   CategoryUncategorizedRoute: CategoryUncategorizedRoute,
-  GallerySlugRoute: GallerySlugRoute,
-  VideosSlugRoute: VideosSlugRoute,
-  ArticlesIndexRoute: ArticlesIndexRoute,
-  FleetIndexRoute: FleetIndexRoute,
-  GalleryIndexRoute: GalleryIndexRoute,
-  VideosIndexRoute: VideosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

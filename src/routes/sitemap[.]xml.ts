@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { areas } from "../lib/areas";
 import { SITE } from "../lib/site";
-import { loadDashboardArticles, mergeArticles } from "../lib/dashboard-articles";
+import { articles } from "../lib/articles";
 
 // Generate this response at request time so the deployed sitemap always reflects
 // the current article and area collections.
@@ -29,8 +29,7 @@ const xmlEscape = (value: string) =>
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
-      GET: async () => {
-        const articles = mergeArticles(await loadDashboardArticles());
+      GET: () => {
         const paths = [
           ...staticPaths,
           ...areas.filter((area) => typeof area.slug === "string" && area.slug.trim()).map((area) => `/area/${area.slug}/`),

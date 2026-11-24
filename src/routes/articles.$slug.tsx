@@ -1,20 +1,17 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Clock, MapPin } from "lucide-react";
 import { Article, CtaBanner } from "../components/Sections";
-import { getArticle } from "../lib/articles";
-import { getDashboardArticle, getDashboardSummaries, mergeArticles } from "../lib/dashboard-articles";
+import { getArticle, articles } from "../lib/articles";
 import { SITE } from "../lib/site";
 import { ArticleStructuredData } from "../components/ArticleStructuredData";
 
 export const Route = createFileRoute("/articles/$slug")({
-  loader: async ({ params }) => {
-    const remote = await getDashboardSummaries();
+  loader: ({ params }) => {
     const pageMatch = params.slug.match(/^page(\d+)$/);
-    if (pageMatch) return { article: null, page: Math.max(2, Number(pageMatch[1]) || 2), remote };
-    // Articles shipped with the site win; anything else may be a dashboard post.
-    const article = getArticle(params.slug) ?? (await getDashboardArticle({ data: params.slug }));
+    if (pageMatch) return { article: null, page: Math.max(2, Number(pageMatch[1]) || 2) };
+    const article = getArticle(params.slug);
     if (!article) throw notFound();
-    return { article, page: 1, remote };
+    return { article, page: 1 };
   },
   head: ({ loaderData }) => ({
     meta: [
@@ -36,8 +33,7 @@ export const Route = createFileRoute("/articles/$slug")({
 });
 
 function ArticlePage() {
-  const { article, page, remote } = Route.useLoaderData();
-  const articles = mergeArticles(remote);
+  const { article, page } = Route.useLoaderData();
   const pageSize = 20;
   const totalPages = Math.max(1, Math.ceil(articles.length / pageSize));
   if (!article) {
@@ -106,9 +102,9 @@ function ArticlePage() {
         </div>
       </section>
       <Article>
-        {article.sections.map((section, sectionIndex) => (
-          <section key={sectionIndex}>
-            {section.heading && <h2>{section.heading}</h2>}
+        {article.sections.map((section) => (
+          <section key={section.heading}>
+            <h2>{section.heading}</h2>
             {section.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
             {section.bullets && <ul>{section.bullets.map((item) => <li key={item}>{item}</li>)}</ul>}
           </section>
