@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, BookOpen } from "lucide-react";
-import { articles } from "../lib/articles";
+import { getDashboardSummaries, mergeArticles } from "../lib/dashboard-articles";
 import { Section } from "../components/Sections";
 import { SITE } from "../lib/site";
 
 export const Route = createFileRoute("/articles/")({
+  loader: async () => ({ remote: await getDashboardSummaries() }),
   head: () => ({
     meta: [
       { title: "مقالات ونصائح ونش إنقاذ الإسماعيلية | ونش العمار" },
@@ -17,6 +18,8 @@ export const Route = createFileRoute("/articles/")({
 });
 
 function ArticlesIndex() {
+  const { remote } = Route.useLoaderData();
+  const articles = mergeArticles(remote);
   const pageSize = 20;
   const totalPages = Math.max(1, Math.ceil(articles.length / pageSize));
   const currentPage = 1;
