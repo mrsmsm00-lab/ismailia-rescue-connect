@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { MapPin } from "lucide-react";
 import { CtaBanner, Section } from "../components/Sections";
 import { areas, regionLabel, type Region } from "../lib/areas";
+import { SITE } from "../lib/site";
 
 export const Route = createFileRoute("/areas")({
   head: () => ({
@@ -13,6 +14,7 @@ export const Route = createFileRoute("/areas")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: SITE.domain + "/areas/" }],
   }),
   component: AreasPage,
 });
@@ -24,7 +26,7 @@ function AreasPage() {
         <Section key={r} title={`ونش انقاذ ${regionLabel[r]}`}>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {areas.filter((a) => a.region === r).map((a) => (
-              <Link key={a.slug} to="/area/$slug" params={{ slug: a.slug }} className="rounded-xl border border-border bg-card p-5 hover:border-primary">
+              <Link key={a.slug} to="/area/$slug/" params={{ slug: a.slug }} className="rounded-xl border border-border bg-card p-5 hover:border-primary">
                 <p className="flex items-center gap-2 font-bold text-foreground"><MapPin className="h-5 w-5 text-primary" /> {a.name}</p>
                 <p className="mt-2 text-sm leading-7 text-muted-foreground">{a.intro}</p>
               </Link>

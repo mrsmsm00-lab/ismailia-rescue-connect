@@ -21,7 +21,7 @@ export const Route = createFileRoute("/articles/$slug")({
       { property: "og:type", content: "article" },
       { property: "og:title", content: loaderData?.article?.seoTitle ?? "مقالات ونش العمار" },
       { property: "og:description", content: loaderData?.article?.description ?? "مقالات ونصائح إنقاذ السيارات." },
-      { property: "og:image", content: loaderData?.article?.cover ?? "" },
+      ...(loaderData?.article?.cover ? [{ property: "og:image", content: absoluteUrl(loaderData.article.cover) }] : []),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "robots", content: "index, follow, max-image-preview:large" },
     ],
@@ -31,6 +31,10 @@ export const Route = createFileRoute("/articles/$slug")({
   }),
   component: ArticlePage,
 });
+
+function absoluteUrl(path: string) {
+  return path.startsWith("http") ? path : SITE.domain + (path.startsWith("/") ? path : "/" + path);
+}
 
 function ArticlePage() {
   const { article, page } = Route.useLoaderData();
@@ -43,7 +47,7 @@ function ArticlePage() {
       <>
         <section className="border-b border-border bg-gradient-to-b from-primary/10 to-background">
           <div className="mx-auto max-w-6xl px-4 py-12 text-center">
-            <Link to="/articles" className="font-bold text-primary">كل المقالات</Link>
+            <Link to="/articles/" className="font-bold text-primary">كل المقالات</Link>
             <h1 className="mt-5 text-3xl font-extrabold text-foreground md:text-5xl">مقالات ونصائح السائقين — الصفحة {currentPage}</h1>
             <p className="mx-auto mt-4 max-w-3xl leading-8 text-muted-foreground">أدلة عملية للتعامل مع أعطال السيارات وطلب ونش الإنقاذ بأمان.</p>
           </div>
@@ -52,7 +56,7 @@ function ArticlePage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {pageArticles.map((item) => (
               <article key={item.slug} className="overflow-hidden rounded-2xl border border-border bg-card">
-                <Link to="/articles/$slug" params={{ slug: item.slug }} className="block">
+                <Link to="/articles/$slug/" params={{ slug: item.slug }} className="block">
                   <img src={item.cover} alt={item.title} className="h-48 w-full object-cover" loading="lazy" />
                   <div className="p-5"><span className="text-xs font-bold text-primary">{item.keyword}</span><h2 className="mt-3 text-xl font-extrabold leading-8 text-foreground">{item.title}</h2><p className="mt-3 text-sm leading-7 text-muted-foreground">{item.description}</p></div>
                 </Link>
@@ -60,9 +64,9 @@ function ArticlePage() {
             ))}
           </div>
           <nav aria-label="التنقل بين صفحات المقالات" className="mt-10 flex flex-wrap items-center justify-center gap-2">
-            <Link to={currentPage <= 2 ? "/articles" : "/articles/$slug"} params={currentPage <= 2 ? undefined : { slug: `page${currentPage - 1}` }} className="rounded-lg border border-border px-4 py-2 text-sm font-bold">السابق</Link>
-            {Array.from({ length: totalPages }, (_, index) => index + 1).map((number) => <Link key={number} to={number === 1 ? "/articles" : "/articles/$slug"} params={number === 1 ? undefined : { slug: `page${number}` }} aria-current={currentPage === number ? "page" : undefined} className={`min-w-10 rounded-lg border px-3 py-2 text-center text-sm font-bold ${currentPage === number ? "border-primary bg-primary text-primary-foreground" : "border-border hover:border-primary"}`}>{number}</Link>)}
-            <Link to="/articles/$slug" params={{ slug: `page${Math.min(totalPages, currentPage + 1)}` }} className="rounded-lg border border-border px-4 py-2 text-sm font-bold">التالي</Link>
+            <Link to={currentPage <= 2 ? "/articles/" : "/articles/$slug/"} params={currentPage <= 2 ? undefined : { slug: `page${currentPage - 1}` }} className="rounded-lg border border-border px-4 py-2 text-sm font-bold">السابق</Link>
+            {Array.from({ length: totalPages }, (_, index) => index + 1).map((number) => <Link key={number} to={number === 1 ? "/articles/" : "/articles/$slug/"} params={number === 1 ? undefined : { slug: `page${number}` }} aria-current={currentPage === number ? "page" : undefined} className={`min-w-10 rounded-lg border px-3 py-2 text-center text-sm font-bold ${currentPage === number ? "border-primary bg-primary text-primary-foreground" : "border-border hover:border-primary"}`}>{number}</Link>)}
+            <Link to="/articles/$slug/" params={{ slug: `page${Math.min(totalPages, currentPage + 1)}` }} className="rounded-lg border border-border px-4 py-2 text-sm font-bold">التالي</Link>
           </nav>
           <p className="mt-4 text-center text-sm text-muted-foreground">عرض {(currentPage - 1) * pageSize + 1}–{Math.min(currentPage * pageSize, articles.length)} من {articles.length} مقالًا</p>
         </Article>
@@ -78,13 +82,15 @@ function ArticlePage() {
         description={article.description}
         slug={article.slug}
         image={article.cover}
+        updatedAt={article.updatedAt}
       />
       <section className="border-b border-border bg-gradient-to-b from-primary/10 to-background">
         <div className="mx-auto max-w-4xl px-4 py-12">
-          <Link to="/articles" className="inline-flex items-center gap-2 text-sm font-bold text-primary"><ArrowRight className="h-4 w-4" /> كل المقالات</Link>
+          <Link to="/articles/" className="inline-flex items-center gap-2 text-sm font-bold text-primary"><ArrowRight className="h-4 w-4" /> كل المقالات</Link>
           <div className="mt-6 flex flex-wrap gap-3 text-xs text-muted-foreground">
             <span className="inline-flex items-center gap-1"><MapPin className="h-3 w-3" /> الإسماعيلية والمناطق المحيطة</span>
             <span className="inline-flex items-center gap-1"><Clock className="h-3 w-3" /> دليل عملي للسائقين</span>
+            {article.updatedAt && <span>آخر تحديث: <time dateTime={article.updatedAt}>{new Date(article.updatedAt + "T00:00:00Z").toLocaleDateString("ar-EG", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })}</time></span>}
           </div>
           <h1 className="mt-5 text-3xl font-extrabold leading-relaxed text-foreground md:text-5xl">{article.title}</h1>
           <p className="mt-5 max-w-3xl text-lg leading-9 text-muted-foreground">{article.intro}</p>
@@ -116,7 +122,7 @@ function ArticlePage() {
         </div>
         <section className="mt-12">
           <h2>مقالات ممكن تهمك</h2>
-          <ul>{related.map((item) => <li key={item.slug}><Link to="/articles/$slug" params={{ slug: item.slug }} className="font-bold text-primary">{item.title}</Link></li>)}</ul>
+          <ul>{related.map((item) => <li key={item.slug}><Link to="/articles/$slug/" params={{ slug: item.slug }} className="font-bold text-primary">{item.title}</Link></li>)}</ul>
         </section>
       </Article>
       <CtaBanner title="ونش العمار — اطلب المساعدة واتأكد من تفاصيل الخدمة" />

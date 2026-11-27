@@ -9,6 +9,9 @@ export const getRouter = () => {
     routeTree,
     context: { queryClient },
     scrollRestoration: true,
+    // Canonical URLs and the sitemap use a trailing slash (as the old site did),
+    // so serve pages there instead of redirecting them away from it.
+    trailingSlash: "always",
     defaultPreloadStaleTime: 0,
   });
 

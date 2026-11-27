@@ -5,9 +5,10 @@ type ArticleStructuredDataProps = {
   description: string;
   slug: string;
   image?: string;
+  updatedAt?: string | undefined;
 };
 
-export function ArticleStructuredData({ title, description, slug, image }: ArticleStructuredDataProps) {
+export function ArticleStructuredData({ title, description, slug, image, updatedAt }: ArticleStructuredDataProps) {
   const url = SITE.domain + "/articles/" + slug + "/";
   const graph = {
     "@context": "https://schema.org",
@@ -18,6 +19,7 @@ export function ArticleStructuredData({ title, description, slug, image }: Artic
         headline: title,
         description,
         inLanguage: "ar-EG",
+        ...(updatedAt ? { dateModified: updatedAt } : {}),
         mainEntityOfPage: { "@type": "WebPage", "@id": url },
         author: { "@type": "Organization", "@id": SITE.domain + "/#organization", name: SITE.shortName },
         publisher: { "@type": "Organization", "@id": SITE.domain + "/#organization", name: SITE.shortName },
