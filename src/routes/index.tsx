@@ -20,8 +20,8 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: SITE.domain + "/" }],
   }),
-  links: [{ rel: "canonical", href: SITE.domain + "/" }],
   component: Index,
 });
 
@@ -37,7 +37,7 @@ function Index() {
     <>
       <HeroSlider />
       <section className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-14 text-center">
-        <img src="/winch-logo.png" alt="ونش العمار انقاذ سيارات الاسماعيلية رقم 1" className="w-full max-w-xl drop-shadow-2xl" loading="eager" />
+        <img src="/winch-logo.webp" alt="ونش العمار انقاذ سيارات الاسماعيلية رقم 1" width={1152} height={768} className="h-auto w-full max-w-xl drop-shadow-2xl" loading="eager" />
         <p className="max-w-2xl text-lg leading-8 text-muted-foreground">ونش العمار — رقم 1 في انقاذ سيارات الإسماعيلية والعاشر من رمضان ومحور 30 يونيو، على مدار 24 ساعة.</p>
       </section>
 
@@ -70,10 +70,10 @@ function Index() {
           ))}
         </div>
         <div className="mt-8 flex flex-wrap gap-4">
-          <Link to="/30jun" className="rounded-xl border border-border bg-card px-6 py-4 font-bold text-foreground transition-colors hover:border-primary/60">
+          <Link to="/30jun/" className="rounded-xl border border-border bg-card px-6 py-4 font-bold text-foreground transition-colors hover:border-primary/60">
             ونش إنقاذ محور 30 يونيو ←
           </Link>
-          <Link to="/10oframadan" className="rounded-xl border border-border bg-card px-6 py-4 font-bold text-foreground transition-colors hover:border-primary/60">
+          <Link to="/10oframadan/" className="rounded-xl border border-border bg-card px-6 py-4 font-bold text-foreground transition-colors hover:border-primary/60">
             ونش إنقاذ العاشر من رمضان ←
           </Link>
         </div>
@@ -83,7 +83,7 @@ function Index() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {Array.from({ length: 8 }, (_, index) => {
             const number = String(index + 1).padStart(3, "0");
-            return <Link key={number} to="/gallery/$slug" params={{ slug: `fleet-${number}` }} className="overflow-hidden rounded-2xl border border-border bg-card"><img src={`/fleet-${number}.jpeg`} alt={`صورة ${index + 1} من أسطول ونش العمار`} className="aspect-[4/3] w-full object-cover" loading="lazy" /><div className="p-4 font-bold text-foreground">صورة من أسطول ونش العمار {index + 1}</div></Link>;
+            return <Link key={number} to="/gallery/$slug/" params={{ slug: `fleet-${number}` }} className="overflow-hidden rounded-2xl border border-border bg-card"><img src={`/fleet-${number}.jpeg`} alt={`صورة ${index + 1} من أسطول ونش العمار`} className="aspect-[4/3] w-full object-cover" loading="lazy" /><div className="p-4 font-bold text-foreground">صورة من أسطول ونش العمار {index + 1}</div></Link>;
           })}
         </div>
         <Link to="/fleet/" className="mt-6 inline-flex rounded-full border border-primary px-6 py-3 font-bold text-primary">عرض أسطول الأوناش وفتح الصور بسهمين ←</Link>

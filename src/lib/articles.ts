@@ -4,11 +4,11 @@ import slide3 from "../assets/winch/slide3.jpg";
 import slide4 from "../assets/winch/slide4.jpg";
 import slide5 from "../assets/winch/slide5.jpg";
 import slide6 from "../assets/winch/slide6.jpg";
-import { facebookArticles } from "./facebook-articles.generated";
-import { additionalArticles } from "./additional-articles.generated";
+
+import { additionalArticles } from "./additional-articles";
 
 export type ArticleSection = { heading: string; paragraphs: string[]; bullets?: string[] };
-export type LocalArticle = { slug: string; title: string; seoTitle: string; description: string; keyword: string; cover: string; intro: string; sections: ArticleSection[]; gallery?: { src: string; alt: string }[] };
+export type LocalArticle = { slug: string; title: string; seoTitle: string; description: string; keyword: string; cover: string; intro: string; sections: ArticleSection[]; gallery?: { src: string; alt: string }[]; updatedAt?: string };
 
 const manualArticles: LocalArticle[] = [
 {
@@ -210,11 +210,11 @@ sections:[
 slug:"when-car-breaks-down-call-alammar",title:"لما تكون عطلان اطلب العمار: حكاية أسرة تعطلت على الطريق",
 seoTitle:"لما تكون عطلان اطلب العمار | ونش إنقاذ سيارات الإسماعيلية",
 description:"عربيتك عطلت وإنت مع أسرتك على الطريق؟ اعرف تتصرف إزاي بأمان، وإزاي تطلب ونش العمار لإنقاذ ونقل السيارة في الإسماعيلية.",
-keyword:"لما تكون عطلان اطلب العمار",cover:"/wide_realistic_high_quality_commercial_advertise.png",
+keyword:"لما تكون عطلان اطلب العمار",cover:"/wide_realistic_high_quality_commercial_advertise.webp",
 gallery:[
-{src:"/wide_realistic_high_quality_commercial_advertise.png",alt:"أسرة تعطلت سيارتها على الطريق والأب محتار والأم تشير لإعلان ونش العمار"},
-{src:"/wide_vivid_realistic_promotional_roadside_assist.png",alt:"ونش العمار في طريقه لمساعدة أسرة تعطلت سيارتها"},
-{src:"/wide_high_resolution_realistic_and_vibrant_roads.png",alt:"وصول ونش العمار وبدء نقل السيارة بأمان"}
+{src:"/wide_realistic_high_quality_commercial_advertise.webp",alt:"أسرة تعطلت سيارتها على الطريق والأب محتار والأم تشير لإعلان ونش العمار"},
+{src:"/wide_vivid_realistic_promotional_roadside_assist.webp",alt:"ونش العمار في طريقه لمساعدة أسرة تعطلت سيارتها"},
+{src:"/wide_high_resolution_realistic_and_vibrant_roads.webp",alt:"وصول ونش العمار وبدء نقل السيارة بأمان"}
 ],
 intro:"تخيل إنك خارج مشوار مع أسرتك، وفجأة العربية تبطل على الطريق، والكبوت مفتوح والأطفال واقفين جنبك وإنت مش عارف تبدأ منين. الموقف متوتر، لكن أهم حاجة إنك تحافظ على سلامة الأسرة وتطلب المساعدة المناسبة بدل ما تجرب حلول ممكن تزود المشكلة. عشان كده بنقولك: لما تكون عطلان، اطلب العمار.",
 sections:[
@@ -247,7 +247,7 @@ sections:[
 
  ];
 
-export const articles: LocalArticle[] = [...manualArticles, ...additionalArticles, ...facebookArticles];
+export const articles: LocalArticle[] = [...manualArticles, ...additionalArticles];
 
 export function getArticle(slug: string) {
   return articles.find((article) => article.slug === slug);

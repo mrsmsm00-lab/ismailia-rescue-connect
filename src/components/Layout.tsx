@@ -1,14 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, Phone, X } from "lucide-react";
 import { useState } from "react";
-import logo from "../assets/winch/logo.jpeg";
 import { SITE, tel, wa } from "../lib/site";
 
 const nav = [
   { to: "/", label: "ونش انقاذ الاسماعيلية" },
-  { to: "/30jun", label: "ونش انقاذ 30 يونيو" },
-  { to: "/10oframadan", label: "ونش انقاذ العاشر من رمضان" },
-  { to: "/areas", label: "مناطق التغطية" },
+  { to: "/30jun/", label: "ونش انقاذ 30 يونيو" },
+  { to: "/10oframadan/", label: "ونش انقاذ العاشر من رمضان" },
+  { to: "/areas/", label: "مناطق التغطية" },
   { to: "/articles/", label: "المقالات والنصائح" },
   { to: "/fleet/", label: "أسطول الأوناش" },
   { to: "/videos/", label: "الفيديوهات" },
@@ -20,12 +19,11 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt={SITE.name} className="h-10 w-10 rounded-full border border-primary/40 object-cover" />
+          <img src="/winch-logo-sm.webp" alt={SITE.name} width={288} height={192} className="h-12 w-auto" />
           <div className="leading-tight">
             <p className="text-sm font-extrabold text-foreground">{SITE.shortName}</p>
             <p className="text-[11px] text-muted-foreground">انقاذ سيارات الاسماعيلية رقم 1#</p>
           </div>
-          <img src="/winch-logo.png" alt="شعار ونش العمار" className="h-12 w-auto" />
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           {nav.map((n) => (
@@ -88,7 +86,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-3">
-            <img src={logo} alt={SITE.name} className="h-12 w-12 rounded-full border border-primary/40 object-cover" />
+            <img src="/winch-logo-sm.webp" alt={SITE.name} width={288} height={192} loading="lazy" className="h-14 w-auto" />
             <p className="font-extrabold text-foreground">{SITE.shortName}</p>
           </div>
           <p className="mt-4 text-sm leading-7 text-muted-foreground">
@@ -117,17 +115,17 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <Link to="/10oframadan" className="transition-colors hover:text-primary">
+              <Link to="/10oframadan/" className="transition-colors hover:text-primary">
                 ونش إنقاذ العاشر من رمضان
               </Link>
             </li>
             <li>
-              <Link to="/30jun" className="transition-colors hover:text-primary">
+              <Link to="/30jun/" className="transition-colors hover:text-primary">
                 ونش إنقاذ محور 30 يونيو
               </Link>
             </li>
             <li>
-              <Link to="/areas" className="transition-colors hover:text-primary">
+              <Link to="/areas/" className="transition-colors hover:text-primary">
                 جميع مناطق تغطية ونش العمار
               </Link>
             </li>

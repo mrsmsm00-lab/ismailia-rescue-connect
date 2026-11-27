@@ -35,12 +35,12 @@ function FleetPage() {
     </header>
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{fleetPhotos.map((item, index) => <article key={item.slug} className="overflow-hidden rounded-xl border border-border bg-card">
       <button type="button" onClick={() => setActive(index)} aria-label={`تكبير ${item.title}`} className="block w-full"><img src={item.src} alt={item.alt} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform hover:scale-[1.02]" /></button>
-      <div className="p-4"><h2 className="font-bold text-foreground">{item.title}</h2><Link to="/gallery/$slug" params={{ slug: item.slug }} className="mt-2 inline-block text-sm font-bold text-primary">صفحة الصورة والتفاصيل ←</Link></div>
+      <div className="p-4"><h2 className="font-bold text-foreground">{item.title}</h2><Link to="/gallery/$slug/" params={{ slug: item.slug }} className="mt-2 inline-block text-sm font-bold text-primary">صفحة الصورة والتفاصيل ←</Link></div>
     </article>)}</div>
     {photo && <div role="dialog" aria-modal="true" aria-label={photo.title} className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4" onClick={() => setActive(null)}>
       <button type="button" onClick={() => setActive(null)} aria-label="إغلاق العرض" className="absolute right-4 top-4 rounded-full bg-white/15 p-3 text-white"><X /></button>
       <button type="button" onClick={(event) => { event.stopPropagation(); setActive((active! + fleetPhotos.length - 1) % fleetPhotos.length); }} aria-label="الصورة السابقة" className="absolute left-3 rounded-full bg-white/15 p-3 text-white"><ChevronLeft /></button>
-      <figure className="max-h-[90vh] max-w-5xl" onClick={(event) => event.stopPropagation()}><img src={photo.src} alt={photo.alt} className="max-h-[78vh] max-w-full object-contain" /><figcaption className="mt-3 text-center text-white"><Link to="/gallery/$slug" params={{ slug: photo.slug }} className="font-bold underline">{photo.title} — عرض الصفحة المستقلة</Link></figcaption></figure>
+      <figure className="max-h-[90vh] max-w-5xl" onClick={(event) => event.stopPropagation()}><img src={photo.src} alt={photo.alt} className="max-h-[78vh] max-w-full object-contain" /><figcaption className="mt-3 text-center text-white"><Link to="/gallery/$slug/" params={{ slug: photo.slug }} className="font-bold underline">{photo.title} — عرض الصفحة المستقلة</Link></figcaption></figure>
       <button type="button" onClick={(event) => { event.stopPropagation(); setActive((active! + 1) % fleetPhotos.length); }} aria-label="الصورة التالية" className="absolute right-3 rounded-full bg-white/15 p-3 text-white"><ChevronRight /></button>
     </div>}
   </main>;

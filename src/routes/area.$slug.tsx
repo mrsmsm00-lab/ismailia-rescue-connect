@@ -33,7 +33,7 @@ export const Route = createFileRoute("/area/$slug")({
   notFoundComponent: () => (
     <div className="mx-auto max-w-3xl px-4 py-24 text-center text-foreground">
       <h1 className="text-3xl font-bold">المنطقة غير موجودة</h1>
-      <Link to="/areas" className="mt-6 inline-block text-primary">كل مناطق التغطية</Link>
+      <Link to="/areas/" className="mt-6 inline-block text-primary">كل مناطق التغطية</Link>
     </div>
   ),
 });
@@ -100,7 +100,7 @@ function AreaPage() {
         <Section title={`مناطق قريبة من ${a.name}`}>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((r) => (
-              <Link key={r.slug} to="/area/$slug" params={{ slug: r.slug }} className="flex items-center gap-2 rounded-xl border border-border bg-card p-4 font-bold text-foreground hover:border-primary">
+              <Link key={r.slug} to="/area/$slug/" params={{ slug: r.slug }} className="flex items-center gap-2 rounded-xl border border-border bg-card p-4 font-bold text-foreground hover:border-primary">
                 <MapPin className="h-5 w-5 text-primary" /> ونش انقاذ {r.name}
               </Link>
             ))}
